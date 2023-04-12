@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Lista de Provas</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <div th:replace="fragmentos/fragmentos :: cabecalho"></div>
+    <section class="neo-section" style="background-color: #6f617e;">
+        <div class="container mt-4">
+            <h1 style="text-align: center;">Lista de Provas</h1>
+            <div class="row">
+                <div class="col-12">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nome do Professor</th>
+                            <th scope="col">Disciplina</th>
+                            <th scope="col">Tipo de Prova</th>
+                            <th scope="col">Nível da Prova</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="provas : ${provas}">
+                            <th class="col-1" scope="row" th:text="${provas.getId()}">ID</th>
+                            <td class="col-4" th:text="${provas.nomeProfessor}">Nome do Professor</td>
+                            <td class="col-2" th:text="${provas.disciplina}">Disciplina</td>
+                            <td class="col-2" th:text="${provas.questoes.toString()}">Tipo de Prova</td>
+                            <td class="col-2" th:text="${provas.dificuldade.toString()}">Nível da Prova</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <a class="btn btn-danger" style="text-decoration-color: azure; width: auto;" href="javascript:history.back()">Voltar</a>
+            </div>
+    </section>
+
+    <div th:replace="fragmentos/fragmentos :: rodape"></div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
