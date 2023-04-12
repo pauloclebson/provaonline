@@ -2,8 +2,7 @@ package br.com.provaonline.enums;
 
 public enum Questoes {
 
-    MULTIPLAESCOLHA,
-    MARCAR_X,
+    MULTIPLA_ESCOLHA,
     VERDADEIRO_OU_FALSO,
     QUESTAO_ABERTA;
     

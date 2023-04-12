@@ -10,6 +10,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Provas {
@@ -18,17 +19,21 @@ public class Provas {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @NotBlank
     @Column(name = "nomeProfessor")
     private String nomeProfessor;
 
+  
     @Column(name = "disciplinas")
     @Enumerated(EnumType.STRING)
     private Materia disciplina;
 
+   
     @Column(name = "questoes")
     @Enumerated(EnumType.STRING)
     private Questoes questoes;
 
+   
     @Column(name = "dificuldade")
     @Enumerated(EnumType.STRING)
     private Dificuldade dificuldade;

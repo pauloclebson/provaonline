@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -13,6 +14,7 @@ import br.com.provaonline.enums.Materia;
 import br.com.provaonline.enums.Questoes;
 import br.com.provaonline.model.Provas;
 import br.com.provaonline.repositories.ProvasRepositorio;
+import jakarta.validation.Valid;
 
 
 @Controller
@@ -42,10 +44,14 @@ public class ControllerProva {
     }
 
     @PostMapping("/provas")
-    public String create(Provas prova){
-        Provas provas = prova.toProvas();
-        this.provasRepositorio.save(provas);
-        return "redirect:provas";
+    public String create(@Valid Provas prova, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "redirect:/provas/novaProva";
+        }else{
+            Provas provas = prova.toProvas();
+            this.provasRepositorio.save(provas);
+            return "redirect:/provas";
+        }
     }
 
 
